@@ -1,10 +1,12 @@
 import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {History} from '../history/history';
 
 @Component({
   selector: 'app-calculator',
   imports: [
-    FormsModule
+    FormsModule,
+    History
   ],
   templateUrl: './app-calculator.html',
   styleUrl: './app-calculator.css',
