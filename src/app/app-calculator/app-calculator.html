@@ -7,12 +7,14 @@
       }
     </select>
     <input [(ngModel)]="operand_b" class="border p-1 rounded"/>
-    <button (click)="calculate()" class="border rounded p-1 bg-emerald-500 text-white cursor-pointer hover:bg-emerald-600 delay-75 active:text-black">
+    <button (click)="calculate(); logCalculation()" class="border rounded p-1 bg-emerald-500 text-white cursor-pointer hover:bg-emerald-600 delay-75 active:text-black">
       Посчитать
     </button>
     <div>{{result()}}</div>
   </div>
-  <div class="border-2 rounded w-1/6 p-3">
-    <app-history />
-  </div>
+  @if (hasHistory) {
+    <div class="border-2 rounded w-1/6 p-3">
+      <app-history />
+    </div>
+  }
 </div>
