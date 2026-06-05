@@ -1,8 +1,10 @@
-<div>
+<div class="relative">
+  <button (click)="clearHistory()" class="absolute right-0 cursor-pointer" title="Очистить историю">❌</button>
   <p class="border-b">История:</p>
   <ul>
     @for (history of stories; track history.id) {
       <li>{{history.expressionValue}}</li>
     }
   </ul>
+
 </div>

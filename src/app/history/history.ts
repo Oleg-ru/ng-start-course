@@ -10,4 +10,7 @@ import {LogHistory} from '../log-history';
 export class History {
   historyService = inject(LogHistory);
   stories = this.historyService.getAllHistory();
+  clearHistory = () => {
+    this.historyService.clearHistory();
+  }
 }

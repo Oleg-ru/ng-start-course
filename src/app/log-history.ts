@@ -15,4 +15,7 @@ export class LogHistory {
       expressionValue: `${operand_a} ${operation} ${operand_b} = ${result}`
     });
   }
+  clearHistory = () => {
+    this.history = [];
+  }
 }
