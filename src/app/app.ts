@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import {AppCalculator} from './calculator/app-calculator/app-calculator';
-import {Navigation} from './navigation/navigation';
 import {RouterOutlet} from '@angular/router';
+import {Header} from './header/header';
 
 @Component({
   selector: 'app-root',
   imports: [
-    AppCalculator,
-    Navigation,
-    RouterOutlet
+    RouterOutlet,
+    Header
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
