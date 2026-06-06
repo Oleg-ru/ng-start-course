@@ -17,8 +17,8 @@ export class Navigation {
       urlName: "Калькулятор"
     },
     {
-      url: "object-list",
-      urlName: "Object список"
+      url: "cards",
+      urlName: "Товары"
     },
   ]
 }

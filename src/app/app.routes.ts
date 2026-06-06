@@ -8,6 +8,10 @@ export const routes: Routes = [
       component: AppCalculator
     },
   {
+    path: "cards",
+    loadChildren: () => import("./card/card.routes").then(m => m.routes)
+  },
+  {
     path: "**",
     component: NotFound404
   },
