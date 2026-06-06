@@ -1,7 +1,7 @@
 import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {History} from '../history/history';
-import {LogHistory} from '../log-history';
+import {LogHistory} from '../../log-history';
 
 @Component({
   selector: 'app-calculator',

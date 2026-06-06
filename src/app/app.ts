@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import {AppCalculator} from './app-calculator/app-calculator';
+import {AppCalculator} from './calculator/app-calculator/app-calculator';
+import {Navigation} from './navigation/navigation';
 
 @Component({
   selector: 'app-root',
   imports: [
-    AppCalculator
+    AppCalculator,
+    Navigation
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'

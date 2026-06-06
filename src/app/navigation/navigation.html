@@ -1,0 +1,7 @@
+<ul class="flex gap-2 border rounded">
+  @for (route of routes; track $index) {
+    <li class="p-1 hover:bg-blue-300 active:text-white delay-75">
+      <a [routerLink]="['/', route.url]" routerLinkActive="active">{{route.urlName}}</a>
+    </li>
+  }
+</ul>

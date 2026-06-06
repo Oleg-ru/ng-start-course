@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {LogHistory} from '../log-history';
+import {LogHistory} from '../../log-history';
 
 @Component({
   selector: 'app-history',

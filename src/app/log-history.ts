@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {History} from './shared/types/History';
+import {History} from './calculator/shared/types/History';
 
 @Injectable({
   providedIn: 'root',
