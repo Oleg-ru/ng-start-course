@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Card} from '../types/card';
 import {ActivatedRoute, Router} from '@angular/router';
 import {cards} from '../data';
 
