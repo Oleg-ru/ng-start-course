@@ -20,5 +20,9 @@ export class Navigation {
       url: "cards",
       urlName: "Товары"
     },
+    {
+      url: "directives",
+      urlName: "Директивы"
+    },
   ]
 }
