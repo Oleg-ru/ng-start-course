@@ -2,3 +2,14 @@
   <h2 class="font-bold">ngFor</h2>
   <div *ngFor="let color of colors; let i = index">{{color}}</div>
 </div>
+
+<div>
+  <div *ngIf="isShow; else emptyElement">
+    О, есть что то)
+  </div>
+  <button class="border p-1 rounded cursor-pointer" (click)="isShow = !isShow">Переключатель</button>
+  <ng-template #emptyElement>
+    <p>Ничего бро нету ( </p>
+  </ng-template>
+
+</div>
