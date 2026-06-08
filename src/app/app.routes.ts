@@ -3,6 +3,7 @@ import {AppCalculator} from './calculator/app-calculator/app-calculator';
 import {NotFound404} from './not-found-404/not-found-404';
 import {Directives} from './directives/directives';
 import {Parent} from './live-cycle/parent/parent';
+import {PostList} from './posts/post-list/post-list';
 
 export const routes: Routes = [
     {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: "live-cycle",
     component: Parent
+  },
+  {
+    path: "posts",
+    component: PostList
   },
   {
     path: "**",

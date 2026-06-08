@@ -28,5 +28,9 @@ export class Navigation {
       url: "live-cycle",
       urlName: "Жизненный цикл"
     },
+    {
+      url: "posts",
+      urlName: "Посты"
+    },
   ]
 }
