@@ -24,5 +24,9 @@ export class Navigation {
       url: "directives",
       urlName: "Директивы"
     },
+    {
+      url: "live-cycle",
+      urlName: "Жизненный цикл"
+    },
   ]
 }
