@@ -13,4 +13,9 @@ export class PostService {
     return this._httpClient.get<PostItem[]>('https://jsonplaceholder.typicode.com/posts')
   }
 
+  getPost(id: number): Observable<PostItem> {
+    console.log(`Получаю: ${id}`)
+    return this._httpClient.get<PostItem>(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  }
+
 }

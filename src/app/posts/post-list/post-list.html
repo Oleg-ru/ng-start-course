@@ -1,1 +1,28 @@
-<p>post-list works!</p>
+@if (post$ | async; as posts) {
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
+    @for (post of posts; track post.id) {
+      <div (click)="showDetails(post.id)" class="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5 cursor-pointer">
+        <h3 class="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">
+          {{ post.title }}
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed line-clamp-4">
+          {{ post.body }}
+        </p>
+      </div>
+    }
+  </div>
+}
+@if (selectedPost | async; as post) {
+  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 min-w-75 shadow-xl">
+      <h3 class="text-xl font-semibold mb-3">Мой попап</h3>
+      <p class="text-gray-600 mb-4">Тут любой контент</p>
+      <button
+        (click)="selectedPost = undefined"
+        class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition"
+      >
+        Закрыть
+      </button>
+    </div>
+  </div>
+}

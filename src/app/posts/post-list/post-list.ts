@@ -1,18 +1,28 @@
 import { Component } from '@angular/core';
 import {PostService} from '../PostService';
+import {Observable} from 'rxjs';
+import {PostItem} from '../PostItem';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-post-list',
-  imports: [],
+  imports: [
+    AsyncPipe
+  ],
   templateUrl: './post-list.html',
   styleUrl: './post-list.css',
 })
 export class PostList {
-  constructor(private postService: PostService) {
-
-  }
+  public post$?: Observable<PostItem[]>;
+  public selectedPost?: Observable<PostItem>;
+  public showModal = false;
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
-    this.postService.getPosts().subscribe(resp => console.log(resp))
+    this.post$ = this.postService.getPosts()
+  }
+
+  showDetails(id: number) {
+    this.selectedPost = this.postService.getPost(id);
   }
 }
