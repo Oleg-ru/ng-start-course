@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {PostService} from '../PostService';
 import {Observable} from 'rxjs';
 import {PostItem} from '../PostItem';
@@ -14,8 +14,9 @@ import {AsyncPipe} from '@angular/common';
 })
 export class PostList {
   public post$?: Observable<PostItem[]>;
-  public selectedPost?: Observable<PostItem>;
+  public selectedPost?: PostItem;
   public showModal = false;
+  public isLoading = signal(false);  // ← signal для загрузки
   constructor(private postService: PostService) {}
 
   ngOnInit() {
@@ -23,6 +24,19 @@ export class PostList {
   }
 
   showDetails(id: number) {
-    this.selectedPost = this.postService.getPost(id);
+    console.log('Click on post:', id);
+    this.showModal = true;
+    this.isLoading.set(true);  // ← начинаем загрузку
+    this.postService.getPost(id).subscribe({
+      next: post => {
+        console.log('Post loaded:', post);
+        this.selectedPost = post;
+        this.isLoading.set(false);  // ← загрузка завершена
+      },
+      error: err => {
+        console.error('Error loading post:', err);
+        this.isLoading.set(false);  // ← ошибка
+      }
+    })
   }
 }
