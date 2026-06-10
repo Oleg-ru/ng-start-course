@@ -4,6 +4,7 @@ import {NotFound404} from './not-found-404/not-found-404';
 import {Directives} from './directives/directives';
 import {Parent} from './live-cycle/parent/parent';
 import {PostList} from './posts/post-list/post-list';
+import {Form} from './form/form';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,10 @@ export const routes: Routes = [
   {
     path: "posts",
     component: PostList
+  },
+  {
+    path: "form",
+    component: Form
   },
   {
     path: "**",

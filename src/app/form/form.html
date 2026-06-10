@@ -1,0 +1,34 @@
+<div class="flex justify-center items-center h-1/2">
+  <div class="flex flex-col w-1/4 border rounded p-3 shadow-2xl" [formGroup]="form">
+    <label class="label">
+      <p>Login</p>
+      <input class="input" type="text" formControlName="login">
+      @if (!form.controls.login.valid && form.controls.login.touched) {
+        <div class="error-msg">Login обязателен</div>
+      }
+    </label>
+    <label class="label">
+      <p>Email</p>
+      <input class="input z-1" type="email" formControlName="email">
+      @if (!form.controls.email.valid && form.controls.email.touched) {
+        @if (form.controls.email.hasError('required')) {
+          <div class="error-msg z-0">Email обязателен</div>
+        } @else if (form.controls.email.hasError('email')) {
+          <div class="error-msg z-0">Допустимый формат example&#64;domen.ru</div>
+        }
+      }
+    </label>
+    <label class="label">
+      <p>Password</p>
+      <input class="input" type="password" formControlName="password">
+      @if (!form.controls.password.valid && form.controls.password.touched) {
+        @if (form.controls.password.hasError('required')) {
+          <div class="error-msg">Password обязателен</div>
+        } @else if (form.controls.password.hasError('minlength')) {
+          <div class="error-msg">Минимум 6 символов</div>
+        }
+      }
+    </label>
+    <button (click)="handleSubmit()" [disabled]="!form.valid" class="mt-2 border rounded p-1 bg-blue-400 cursor-pointer hover:bg-blue-500 active:text-amber-50 delay-75 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed">Submit</button>
+  </div>
+</div>

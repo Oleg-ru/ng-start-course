@@ -32,5 +32,9 @@ export class Navigation {
       url: "posts",
       urlName: "Посты"
     },
+    {
+      url: "form",
+      urlName: "Форма"
+    },
   ]
 }
