@@ -1,5 +1,23 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
+
+export function checkRegExp(regExp: RegExp): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const forbidden = regExp.test(control.value);
+    return !forbidden ? {forbiddenValue: {value: control.value}} : null;
+  }
+}
+
+// Regex для валидации email (стандартный)
+export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 @Component({
   selector: 'app-form',
@@ -15,6 +33,9 @@ export class Form {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
+  public loginForm = new FormGroup({
+    mail: new FormControl('', [checkRegExp(emailRegex)])
+  })
   handleSubmit = () => {
     console.log(this.form.value)
   }
