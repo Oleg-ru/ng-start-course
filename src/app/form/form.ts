@@ -16,6 +16,10 @@ export function checkRegExp(regExp: RegExp): ValidatorFn {
   }
 }
 
+export const confirmPassword: ValidatorFn = (control: AbstractControl): ValidationErrors | null  => {
+  return control.value.password === control.value.confirmPassword ? null : {PasswordsNotEquals: true}
+}
+
 // Regex для валидации email (стандартный)
 export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -34,8 +38,10 @@ export class Form {
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
   public loginForm = new FormGroup({
-    mail: new FormControl('', [checkRegExp(emailRegex)])
-  })
+    mail: new FormControl('', [checkRegExp(emailRegex)]),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
+  }, confirmPassword)
   handleSubmit = () => {
     console.log(this.form.value)
   }

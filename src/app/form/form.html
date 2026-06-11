@@ -34,7 +34,9 @@
 
   <div [formGroup]="loginForm" class="flex flex-col w-1/4 border rounded p-3 shadow-2xl">
     <h2>Login form</h2>
+    <hr>
     <label class="label">
+      Email
       <input class="input" type="text" formControlName="mail">
       @if (!loginForm.controls.mail.valid && loginForm.controls.mail.touched) {
         @if (loginForm.controls.mail.hasError('forbiddenValue')) {
@@ -42,6 +44,21 @@
         }
       }
     </label>
+    <label class="label">
+      <p>Password</p>
+      <input class="input" type="password" formControlName="password">
+    </label>
+    <label class="label">
+      <p>Confirm password</p>
+      <input class="input" type="password" formControlName="confirmPassword">
+    </label>
+    <div>
+      @if (loginForm.errors?.['PasswordsNotEquals'] && loginForm.controls.password.touched && loginForm.controls.confirmPassword.touched) {
+        <div  class="relative p-4">
+          <div class="error-msg">Пароли не совпадают</div>
+        </div>
+      }
+    </div>
   </div>
 
 </div>
