@@ -2,12 +2,19 @@ import {Component, inject} from '@angular/core';
 import {
   AbstractControl, FormArray, FormBuilder,
   FormControl,
-  FormGroup,
+  FormGroup, FormsModule,
   ReactiveFormsModule,
   ValidationErrors,
   ValidatorFn,
   Validators
 } from '@angular/forms';
+import {JsonPipe} from '@angular/common';
+
+export interface TemplateFormI {
+  user: string;
+  email: string;
+  password: string;
+}
 
 export function checkRegExp(regExp: RegExp): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -26,12 +33,20 @@ export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 @Component({
   selector: 'app-form',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JsonPipe,
+    FormsModule
   ],
   templateUrl: './form.html',
   styleUrl: './form.css',
 })
 export class Form {
+
+  public templateForm: TemplateFormI = {
+    user: '',
+    email: '',
+    password: '',
+  }
 
   private fb = inject(FormBuilder);
   public get skills(): FormArray {
@@ -77,4 +92,6 @@ export class Form {
   public onSubmit() {
     console.log(this.fbForm.value);
   }
+
+  protected readonly FormGroup = FormGroup;
 }
