@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
-  AbstractControl,
+  AbstractControl, FormArray, FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -32,17 +32,49 @@ export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   styleUrl: './form.css',
 })
 export class Form {
+
+  private fb = inject(FormBuilder);
+  public get skills(): FormArray {
+    return this.fbForm.get('skills') as FormArray;
+  }
+
   public form = new FormGroup({
     login: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
+
   public loginForm = new FormGroup({
     mail: new FormControl('', [checkRegExp(emailRegex)]),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
-  }, confirmPassword)
+  }, confirmPassword);
+
+  public fbForm = this.fb.group({
+    name: [''],
+    skills: this.fb.array([])
+  })
+
   handleSubmit = () => {
     console.log(this.form.value)
+  }
+
+  public newSkill(): FormGroup {
+    return this.fb.group({
+      skill: '',
+      experience: '',
+    })
+  }
+
+  public addSkill() {
+    this.skills.push(this.newSkill());
+  }
+
+  public removeSkill(index: number) {
+    this.skills.removeAt(index);
+  }
+
+  public onSubmit() {
+    console.log(this.fbForm.value);
   }
 }
