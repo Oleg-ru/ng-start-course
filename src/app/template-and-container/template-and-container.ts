@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {NgForOf, NgTemplateOutlet} from '@angular/common';
 
 @Component({
@@ -10,4 +10,10 @@ import {NgForOf, NgTemplateOutlet} from '@angular/common';
   templateUrl: './template-and-container.html',
   styleUrl: './template-and-container.css',
 })
-export class NgTemplateAndContainer {}
+export class NgTemplateAndContainer {
+  @ViewChild('paragraph') paragraphEl?: ElementRef<HTMLParagraphElement>;
+
+  ngAfterViewInit() {
+    console.log(this.paragraphEl)
+  }
+}
