@@ -5,6 +5,7 @@ import {Directives} from './directives/directives';
 import {Parent} from './live-cycle/parent/parent';
 import {PostList} from './posts/post-list/post-list';
 import {Form} from './form/form';
+import {NgTemplateAndContainer} from './template-and-container/template-and-container';
 
 export const routes: Routes = [
     {
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: "form",
     component: Form
+  },
+  {
+    path: "ng-template-container",
+    component: NgTemplateAndContainer
   },
   {
     path: "**",

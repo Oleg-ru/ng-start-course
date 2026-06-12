@@ -1,0 +1,17 @@
+<div class="w-1/2">
+  <h2 class="font-bold font-stretch-200%">
+    ng-container & ng-template
+  </h2>
+<!--  ng-container не оставяет следов в DOM дереве-->
+  <ng-container *ngFor="let i of [1,2,3]">
+    Item {{i}}
+  </ng-container>
+  <div class="border-t-2">
+    <p>First element</p>
+    <ng-container *ngTemplateOutlet="secondEl"></ng-container>
+    <p>Third element</p>
+  </div>
+</div>
+<ng-template #secondEl>
+  <p>Second element</p>
+</ng-template>

@@ -36,5 +36,9 @@ export class Navigation {
       url: "form",
       urlName: "Форма"
     },
+    {
+      url: "ng-template-container",
+      urlName: "Ng-template-container"
+    },
   ]
 }
