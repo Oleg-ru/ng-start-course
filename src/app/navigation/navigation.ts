@@ -40,5 +40,9 @@ export class Navigation {
       url: "ng-template-container",
       urlName: "Ng-template-container"
     },
+    {
+      url: "view-foo",
+      urlName: "View"
+    },
   ]
 }

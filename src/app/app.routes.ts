@@ -6,6 +6,7 @@ import {Parent} from './live-cycle/parent/parent';
 import {PostList} from './posts/post-list/post-list';
 import {Form} from './form/form';
 import {NgTemplateAndContainer} from './template-and-container/template-and-container';
+import {ViewFoo} from './view-foo/view-foo';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
   {
     path: "ng-template-container",
     component: NgTemplateAndContainer
+  },
+  {
+    path: "view-foo",
+    component: ViewFoo
   },
   {
     path: "**",
