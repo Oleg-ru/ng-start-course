@@ -6,6 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class UserService {
   isUserLogger = new BehaviorSubject<boolean>(false);
+
   public login() {
     this.isUserLogger.next(true);
   }
