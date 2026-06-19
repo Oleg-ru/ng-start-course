@@ -1,7 +1,9 @@
 <div class="flex justify-center items-center mt-10">
   <div class="flex gap-4 justify-items-start flex-wrap w-1/2">
     @for (card of cards; track card.id) {
-      <div (click)="showDetails(card.id)" class="bg-white border border-gray-200 rounded-lg p-4 w-[calc(30%-0.75rem)] shadow-sm hover:shadow-md transition-all cursor-pointer">
+      <div (click)="showDetails(card.id)"
+           class="bg-white border border-gray-200 rounded-lg p-4 w-[calc(30%-0.75rem)] shadow-sm hover:shadow-md transition-all cursor-pointer"
+      >
         <div class="font-bold text-gray-800 text-lg mb-2">{{card.title}}</div>
         <div class="text-gray-500 text-sm">{{card.content.slice(0, 10) + "..."}}</div>
       </div>
